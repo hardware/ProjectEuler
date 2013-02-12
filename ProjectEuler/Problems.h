@@ -19,6 +19,7 @@ public:
 	Problems(void);
 
 	void solve(short id);
+	void list();
 
 	int problem1();
 	unsigned problem2();

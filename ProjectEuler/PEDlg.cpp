@@ -14,7 +14,7 @@ void PEDlg::run()
 		cout << "-----------------------------\n\n";
 
 		cout << "[1] Solve a problem" << endl;
-		cout << "[2] Problem list" << endl;
+		cout << "[2] Problems list" << endl;
 		cout << "[3] Quit\n\n";
 
 		cout << "Your choice ? ";
@@ -29,6 +29,9 @@ void PEDlg::run()
 			problems.solve(num);
 			break;
 		case 2 :
+			cout << endl << "## PROBLEMSLIST ## \n\n";
+			problems.list();
+			cout << endl;
 			break;
 		case 3:
 			quit = 1;

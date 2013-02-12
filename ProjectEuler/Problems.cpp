@@ -435,6 +435,16 @@ void Problems::solve(short id)
 
 }
 
+void Problems::list()
+{
+	int i;
+
+	for(i=1;i<=problemList.size();i++)
+	{
+		cout << "[" << i << "] " << problemList[i] << endl;
+	}
+}
+
 Problems::Problems()
 {
 	problemList[1] = "Multiples of 3 and 5";
