@@ -42,9 +42,7 @@ unsigned Problems::problem2()
 	Fn = F1 + F2
 	*/
 
-	int F1 = 0;
-	int F2 = 1;
-	int Fn = 0;
+	int F1 = 0, F2 = 1, Fn = 0;
 	unsigned sum = 0;
 
 	while (Fn < MAX)
@@ -60,8 +58,7 @@ unsigned Problems::problem2()
 
 long long Problems::problem3()
 {
-	long long n = 600851475143LL;
-	long long i;
+	long long i, n = 600851475143LL;
 
 	for(i=2LL;i<sqrt(n);i++) if(n%i == 0) n /= i;
 
