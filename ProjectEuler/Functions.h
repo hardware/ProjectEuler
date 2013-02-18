@@ -15,6 +15,7 @@ public:
 	static bool isPalindromic(unsigned n);
 	static unsigned countDivisors(unsigned n);
 	static bool isPrime(int n);
-	static int SieveOfEratosthenes(int n);
+	static void PrimeList(int limit, vector<int> &primeList);
+	static void SieveOfEratosthenes(int limit, vector<int> &primeList);
 };
 

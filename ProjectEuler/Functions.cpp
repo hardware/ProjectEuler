@@ -83,23 +83,48 @@ bool Functions::isPrime(int n)
 	}
 }
 
-int Functions::SieveOfEratosthenes(int n)
+void Functions::PrimeList(int limit, vector<int> &primeList)
 {
-	int i, j;
-	vector<bool> arr(n+1, false); // bool arr[N+1] = { 0 };
+	vector<bool> arr(limit+1, true);
 
-	for(i=2;i<=n;i++)
+	for(int i=2;i<=limit;i++)
 	{
-		if(arr[i] == false) 
+		if(arr[i]) 
 		{
-			for(j=2;i*j<=n;j++)
+			for(int j=2;i*j<=limit;j++)
 			{
-				arr[i*j] = 1;
+				arr[i*j] = false;
 			}
 
-			// cout << i << endl;
+			primeList.push_back(i);
+		}
+	}
+}
+
+void Functions::SieveOfEratosthenes(int limit, vector<int> &primeList)
+{
+	int sieveBound = (int)(limit - 1) / 2;
+	int upperSqrt = ( (int) sqrt( (double) limit) - 1) / 2;
+	primeList.push_back(2);
+
+	vector<bool> arr(sieveBound+1, true);
+
+	for(int i = 1; i <= upperSqrt; i++)
+	{
+		if(arr[i]) 
+		{
+			for (int j = i * 2 * (i + 1); j <= sieveBound; j += 2 * i + 1)
+			{
+				arr[j] = false;
+			}
 		}
 	}
 
-	return 0;
+	for(int i = 1; i <= sieveBound; i++)
+	{
+		if(arr[i])
+		{
+			primeList.push_back(2 * i + 1);
+		}
+	}
 }
