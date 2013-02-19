@@ -105,7 +105,6 @@ void Functions::SieveOfEratosthenes(int limit, vector<int> &primeList)
 {
 	int sieveBound = (int)(limit - 1) / 2;
 	int upperSqrt = ( (int) sqrt( (double) limit) - 1) / 2;
-	primeList.push_back(2);
 
 	vector<bool> arr(sieveBound+1, true);
 
@@ -120,11 +119,57 @@ void Functions::SieveOfEratosthenes(int limit, vector<int> &primeList)
 		}
 	}
 
+	primeList.push_back(2);
+
 	for(int i = 1; i <= sieveBound; i++)
 	{
 		if(arr[i])
 		{
 			primeList.push_back(2 * i + 1);
+		}
+	}
+}
+
+void Functions::SieveOfAtkin(int limit, vector<int> &primeList)
+{
+	vector<bool> arr(limit+1, false);
+	int upperSqrt = (int) sqrt( (double) limit);
+
+	for (int i = 1; i <= upperSqrt; i++)
+	{
+		for (int j = 1; j <= upperSqrt; j++)
+		{
+			int n = 4 * i * i + j * j;
+			if (n <= limit && (n % 12 == 1 || n % 12 == 5)) {
+				arr[n] = !arr[n];
+			}
+			n = 3 * i * i + j * j;
+			if (n <= limit && (n % 12 == 7)) {
+				arr[n] = !arr[n];
+			}
+			n = 3 * i * i - j * j;
+			if (i > j && n <= limit && (n % 12 == 11)) {
+				arr[n] = !arr[n];
+			}
+		}
+	}
+
+	for (int i = 5; i <= upperSqrt; i++)
+	{
+		if (arr[i]) {
+			for (int j = i * i; j <= limit; j += i * i)
+			{
+				arr[j] = false;
+			}
+		}
+	}
+
+	primeList.push_back(2);
+	primeList.push_back(3);
+
+	for (int i = 5; i <= limit; i += 2) {
+		if (arr[i]) {
+			primeList.push_back(i);
 		}
 	}
 }

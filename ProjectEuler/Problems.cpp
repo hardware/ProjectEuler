@@ -200,16 +200,29 @@ int Problems::problem9()
 long long Problems::problem10() 
 {
 	const int LIMIT = 2000000;
-	vector<int> primeList;
 	long long sum = 0LL;
-	unsigned i;
+	int i;
 
-	Functions::SieveOfEratosthenes(LIMIT, primeList);
+	for(i=0;i<LIMIT;i++)
+	{
+		if(Functions::isPrime(i))
+		{
+			sum += i;
+		}
+	}
 
-	for(i=0;i<primeList.size();i++)
+	/*
+	vector<int> primeList;
+
+	Functions::PrimeList(LIMIT, primeList); // 14 sec
+	Functions::SieveOfEratosthenes(LIMIT, primeList); // 5 sec
+	Functions::SieveOfAtkin(LIMIT, primeList); // 4 sec
+
+	for(unsigned i=0;i<primeList.size();i++)
 	{
 		sum += primeList[i];
 	}
+	*/
 
 	return sum;
 }

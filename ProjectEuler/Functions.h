@@ -17,5 +17,6 @@ public:
 	static bool isPrime(int n);
 	static void PrimeList(int limit, vector<int> &primeList);
 	static void SieveOfEratosthenes(int limit, vector<int> &primeList);
+	static void SieveOfAtkin(int limit, vector<int> &primeList);
 };
 
